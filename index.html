@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Formulario_JS</title>
+</head>
+
+<body>
+
+    <div class="formulario">
+        <label class="texto" for="">Informe seu peso (em Kg): </label>
+        <input class="input" type="text" id="inputPeso" placeholder="70.00 Kg">
+
+        <label class="texto" for="">Informe sua altura (em Metros): </label>
+        <input class="input" type="text" id="inputAltura" placeholder="1.80 M">
+
+        <button id="imprimirIMC" type="button">Imprimir IMC</button>
+
+        <div id="exibir">
+            <h3 class="" id="exibir-texto"></h3>
+        </div>
+    </div>
+
+    <script>
+
+        function exibirIMC() {
+            var resultado = document.getElementById('exibir-texto');
+
+            var peso = parseFloat(document.getElementById("inputPeso").value)
+
+            var altura = parseFloat(document.getElementById("inputAltura").value)
+
+            var IMC = (peso / (altura * altura)).toFixed(2)
+
+            if (IMC < 18.5) {
+                resultado.textContent = `Seu IMC é ${IMC} Você está abaixo do peso.`
+            } else if (IMC >= 18.5 && IMC <= 24.9) {
+                resultado.textContent = `Seu IMC é ${IMC} Seu peso está normal.`
+            } else if (IMC >= 25 && IMC <= 29.9) {
+                resultado.textContent = `Seu IMC é ${IMC} Você está Sobrepeso.`
+            } else {
+                resultado.textContent = `Seu IMC é ${IMC} Obesidade.`
+            }
+        }
+
+        var botao = document.getElementById("imprimirIMC")
+        botao.addEventListener("click", exibirIMC)
+
+    </script>
+
+
+</body>
+
+</html>
